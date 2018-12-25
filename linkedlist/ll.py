@@ -10,7 +10,7 @@ class LinkedList:
 		while printval is not None:
 			# print(printval.val)
 			if(printval.next is not None):
-				l += str(printval.val) + ", "
+				l += str(printval.val) + "-> "
 			else:
 				l += str(printval.val)
 			printval = printval.next
@@ -121,9 +121,7 @@ class LinkedList:
 			prev = curr
 			curr = curr.next
 
-	def add_l_to_r(self, h2):
-		# self.list_print()
-		# h2.list_print()
+	def conv_ll_str(self, h2):
 		num1 = ""
 		num2 = ""
 		curr = self.headval
@@ -136,68 +134,36 @@ class LinkedList:
 			num2 += str(curr2.val)
 			curr2 = curr2.next
 
-		total = int(num1) + int(num2)
-		print("ll1: ")
+		return num1, num2
+
+
+	def two_ll_print(self, h2):
+		print("linked list 1: ")
 		self.list_print()
-		print("ll2: ")
+		print("linked list 2: ")
 		h2.list_print()
+
+
+	def add_l_to_r(self, h2):
+		num1, num2 = self.conv_ll_str(h2)
+
+		total = int(num1) + int(num2)
+		self.two_ll_print(h2)
 
 		print()
 		print("The sum of the two linked lists from left to right: ", total)
 
+	def add_r_to_l(self, h2):
+		num1, num2 = self.conv_ll_str(h2)
+		num1 = int(num1[::-1])
+		num2 = int(num2[::-2])
 
+		total = num1 + num2 
 
+		self.two_ll_print(h2)
+
+		print()
+		print("The sum of the two linked lists from right to left: ", total)
 
 	
 
-
-list1 = LinkedList()
-list2 = LinkedList()
-list1.headval = Node(0)
-list2.headval = Node(0)
-
-n1 = Node(1)
-n7 = Node(1)
-n8 = Node(2)
-n2 = Node(2)
-n3 = Node(3)
-n4 = Node(4)
-n5 = Node(4)
-n6 = Node(4)
-
-n9 = Node(1)
-n10 = Node(1)
-
-list1.add_to_end(n1)
-list1.add_to_end(n8)
-list1.add_to_end(n7)
-list1.add_to_end(n2)
-list1.add_to_end(n4)
-list1.add_to_end(n5)
-list1.add_to_end(n6)
-
-list2.add_to_end(n9)
-list2.add_to_end(n10)
-# list1.add_to_end(n5)
-# list1.add_to_end(n6)
-
-# print("Before")
-# list1.list_print()
-# print()
-
-# list1.rm_dupe()
-# list1.delete(5)
-
-# list1.reverse()
-# list1.rm_dupe()
-
-# list1.rm_kth_last(1)
-
-list1.add_l_to_r(list2)
-
-
-
-
-# print()
-# print("After: ")
-# list1.list_print()
