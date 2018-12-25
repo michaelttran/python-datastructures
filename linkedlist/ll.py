@@ -100,6 +100,29 @@ class LinkedList:
 
 		self.headval = tmp.headval
 
+	# DEV NOTE: Not sure if kth to last should start at 0 or 1. Going to assume 0 because of CS
+	def rm_kth_last(self, num):
+		curr = prev = self.headval
+		lLength = 0
+		i = 0
+
+		# One pass through to find length of the linked list
+		while curr is not None:
+			lLength += 1
+			curr = curr.next
+
+		curr = self.headval
+		pos = lLength - num - 1
+		# Formula for kth to last: length - num = index that should be deleted
+		while curr is not None:
+			if(i == pos):
+				print("The", num, "to last element is", curr.val)
+			i += 1
+			prev = curr
+			curr = curr.next
+
+
+
 
 	
 
@@ -133,6 +156,10 @@ print()
 # list1.delete(5)
 
 # list1.reverse()
+list1.rm_dupe()
+
+list1.rm_kth_last(1)
+
 
 
 
