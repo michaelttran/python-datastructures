@@ -79,10 +79,26 @@ class LinkedList:
 
 			prev = curr
 			curr = curr.next
-			
-
 
 		print("Finished deleting duplicates")
+		print()
+
+	def reverse(self):
+		curr = self.headval
+		tmp = LinkedList()
+		tmp.headval = Node(curr.val)
+		curr = curr.next
+
+		while curr is not None:
+			tNode = Node(curr.val)
+			tNode.next = tmp.headval
+			tmp.headval = tNode
+			curr = curr.next
+
+		print("Reversed LL: ")
+		tmp.list_print()
+
+		self.headval = tmp.headval
 
 
 	
@@ -113,8 +129,11 @@ print("Before")
 list1.list_print()
 print()
 
-list1.rm_dupe()
+# list1.rm_dupe()
 # list1.delete(5)
+
+# list1.reverse()
+
 
 
 
